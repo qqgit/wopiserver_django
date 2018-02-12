@@ -20,9 +20,7 @@ The project is developed and tested with Python 3.6 and Django 1.11.
 WOPI server needs to work with Office Online Server.
 The project is tested in an environments which have 3 servers and one user client.
 
-                                        AD DS on Windows Server 2012 --------------------------------
-                                                      |                                             |
-browser on user client --------- Office Online Server on Windows Server 2012 --------- wopiserver_django(WOPI Server) on CentOS 7
+                                        ![Test Environment for wopiserver_django](https://github.com/qqgit/wopiserver_django/blob/master/wopiserver/images/Test%20Environment.png)
 
 # 
 
