@@ -45,7 +45,7 @@ $ git clone https://github.com/qqgit/wopiserver_django.git
 $ cd wopiserver_django/
 $ python manage.py runserver 0.0.0.0:8000$ 
 ```
-You can change the value of WOPI_FILE_DIR in wopiserver_django/settings.py to your directory for office documents storation.
+You can change the value of WOPI_FILE_DIR in wopiserver_django/settings.py to your directory for office documents storation. If you wish to following the following instruction, please keep WOPI_FILE_DIR unchanged now.
 
 Now you can test the server in another terminal (the test step can be skipped). Open another terminal and change to xxxx/wopiserver_django/ directory and run
 ```
@@ -53,6 +53,33 @@ $ python manage.py test
 ```
 If everything goes well, congratulations! You have a WOPI server running now.
 ## Check your WOPI Server in a browser
-For the CheckFileInfo interface, you can visit http://192.168.141.132:8000/wopi/files/test.docx and it should returns some json string like "{"BaseFileName": "test.docx", "OwnerId": "qi", "Size": 13918, "SHA256": "zaDaG/7D0CZ2Rp4oB69h8GWIte70KLgZGg6fEHPPZvs=", "Version": "1", "SupportsUpdate": true, "UserCanWrite": true, "SupportsLocks": true}"
+For the CheckFileInfo interface, you can visit http://192.168.141.132:8000/wopi/files/test.docx and it should returns some json string like 
+```
+{"BaseFileName": "test.docx", "OwnerId": "qi", "Size": 13918, "SHA256": "zaDaG/7D0CZ2Rp4oB69h8GWIte70KLgZGg6fEHPPZvs=", "Version": "1", "SupportsUpdate": true, "UserCanWrite": true, "SupportsLocks": true}
+```
 For the GetFile interface, you can visit http://192.168.141.132:8000/wopi/files/test.docx/contents and it should prompt to download the file test.docx.
+## View Office documents online in a browser
+Word View
 
+http://192.168.141.131/wv/wordviewerframe.aspx?WOPISrc=http://192.168.141.132:8000/wopi/files/test.docx&access_token=123
+
+PowerPoint View
+
+http://192.168.141.131/p/PowerPointFrame.aspx?PowerPointView=ReadingView&WOPISrc=http://192.168.141.132:8000/wopi/files/test.pptx&access_token=123
+
+Excel View
+
+http://192.168.141.131/x/_layouts/xlviewerinternal.aspx?ui=zh-CN&rs=zh-CN&WOPISrc=http://192.168.141.132:8000/wopi/files/test.xlsx&access_token=123
+
+## Edit Office documents online in a browser
+Word Edit
+
+http://192.168.141.131/we/wordeditorframe.aspx?WOPISrc=http://192.168.141.132:8000/wopi/files/test.docx&access_token=123
+
+PowerPoint Edit
+
+http://192.168.141.131/p/PowerPointFrame.aspx?PowerPointView=EditView&WOPISrc=http://192.168.141.13:8000/wopi/files/test.pptx&access_token=123
+
+Excel Edit
+
+http://192.168.141.131/x/_layouts/xlviewerinternal.aspx?edit=1&WOPISrc=http://192.168.141.132:8000/wopi/files/test.xlsx&access_token=123
