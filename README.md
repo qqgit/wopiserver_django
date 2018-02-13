@@ -26,9 +26,33 @@ The project is tested in an environment which have 3 servers and one user client
 # 
 
 # Usage & Examples
+## Check Office Online Server in a browser
+You should make sure Office Online Server is doing its job OK.
 
-In our test environment, Office Online Server 2016 is run on a Windows Server 2012 R2 with IP address 192.168.141.131. Office Online Server provides a discovery url: http://192.168.141.131/hosting/discovery. If Office Online Server is OK, you can visit the discovery address http://192.168.141.131/hosting/discovery in a browser of user client and see some returned xml contents like following:
+In our test environment, Office Online Server 2016 is run on a Windows Server 2012 R2 with IP address 192.168.141.131. Office Online Server provides a discovery url: http://192.168.141.131/hosting/discovery. If Office Online Server works well, you can visit the discovery address http://192.168.141.131/hosting/discovery in a browser of user client and see some returned xml contents like following:
 ![hosting/discovery contents from Office Online Server](https://github.com/qqgit/wopiserver_django/blob/master/wopiserver/images/discovery.png)
+## Download, run and test WOPI Server
+First you should make sure python 3.6 and django 1.11 is installed correctly on your system.
+```
+$ python -V
+Python 3.6...
+$ python -c "import django;print(django.\__version\__)"
+1.11.3
+```
+Then download wopiserver_django and run server
+```
+$ git clone https://github.com/qqgit/wopiserver_django.git
+$ cd wopiserver_django/
+$ python manage.py runserver 0.0.0.0:8000$ 
+```
+You can change the value of WOPI_FILE_DIR in wopiserver_django/settings.py to your directory for office documents storation.
 
-
+Now you can test the server in another terminal (the test step can be skipped). Open another terminal and change to xxxx/wopiserver_django/ directory and run
+```
+$ python manage.py test
+```
+If everything goes well, congratulations! You have a WOPI server running now.
+## Check your WOPI Server in a browser
+For the CheckFileInfo interface, you can visit http://192.168.141.132:8000/wopi/files/test.docx and it should returns some json string like "{"BaseFileName": "test.docx", "OwnerId": "qi", "Size": 13918, "SHA256": "zaDaG/7D0CZ2Rp4oB69h8GWIte70KLgZGg6fEHPPZvs=", "Version": "1", "SupportsUpdate": true, "UserCanWrite": true, "SupportsLocks": true}"
+For the GetFile interface, you can visit http://192.168.141.132:8000/wopi/files/test.docx/contents and it should prompt to download the file test.docx.
 
