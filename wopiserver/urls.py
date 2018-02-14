@@ -11,6 +11,8 @@ from . import views
 app_name = 'wopiserver'
 urlpatterns = [
     url(r'^files/(?P<fileid>[^/]+)$',views.wopiGetFileInfo),
+#     url(r'^files/(?P<fileid>[^/]+)/$',views.wopiGetFileInfo),
     url(r'^files/(?P<fileid>[^/]+)/contents$',views.wopiFileContents),
+#     url(r'^files/(?P<fileid>[^/]+)/contents/$',views.wopiFileContents),
 ]
 
