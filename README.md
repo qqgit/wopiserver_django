@@ -43,7 +43,7 @@ Then download wopiserver_django and run server
 ```
 $ git clone https://github.com/qqgit/wopiserver_django.git
 $ cd wopiserver_django/
-$ python manage.py runserver 0.0.0.0:8000$ 
+$ python manage.py runserver 0.0.0.0:8000
 ```
 You can change the value of WOPI_FILE_DIR in wopiserver_django/settings.py to your directory for office documents storation. If you wish to following the following instruction, please keep WOPI_FILE_DIR unchanged now.
 
